@@ -1,4 +1,4 @@
-export const View = ({ gdpr = {}, cookies = []}) => {
+export const View = ({ gdpr = {}, cookies = [] }) => {
   const {
     title,
     content,
