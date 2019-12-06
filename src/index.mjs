@@ -1,4 +1,4 @@
-export const View = (args = {}) => {
+export const View = ({ gdpr = {}, cookies = []}) => {
   const {
     title,
     content,
@@ -6,18 +6,18 @@ export const View = (args = {}) => {
     small = false,
     left = false,
     right = false,
-    cookies = [],
     noCookieButtonText,
     noCookieText,
     allowCookieButtonText,
     allowAllCookiesButtonText,
     denyCookieButtonText,
-  } = args
+  } = gdpr
+
   if (!show) {
     return
   }
 
-  cookies = Object.entries(cookies)
+  const cookies = Object.entries(cookies || {})
 
   return div({ class: { Gdpr: true, show, small, left, right } }, [
     input({ type: 'checkbox', name: 'show-hide', id: 'show-hide', checked: !show }),
@@ -26,7 +26,7 @@ export const View = (args = {}) => {
       content && p(content),
       !!cookies.length
         ? [
-            gdpr.cookieText && p(gdpr.cookieText),
+            cookieText && p(cookieText),
             ul(
               cookies
                 .sort(([_, { required }]) => (required ? 0 : 1))
@@ -111,7 +111,7 @@ export const actions = {
     close: (state, { allowed }) => {
       const { cookies } = state
       if (typeof allowed === 'boolean') {
-        Object.entries(state.cookies).forEach(([name, cookie]) => {
+        Object.entries(cookies).forEach(([name, cookie]) => {
           cookies[name] = {
             ...cookie,
             allowed,
