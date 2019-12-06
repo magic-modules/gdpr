@@ -1,17 +1,18 @@
-export const View = ({
-  title,
-  content,
-  show = true,
-  small = false,
-  left = false,
-  right = false,
-  cookies = [],
-  noCookieButtonText,
-  noCookieText,
-  allowCookieButtonText,
-  allowAllCookiesButtonText,
-  denyCookieButtonText,
-}) => {
+export const View = (args = {}) => {
+  const {
+    title,
+    content,
+    show = true,
+    small = false,
+    left = false,
+    right = false,
+    cookies = [],
+    noCookieButtonText,
+    noCookieText,
+    allowCookieButtonText,
+    allowAllCookiesButtonText,
+    denyCookieButtonText,
+  } = args
   if (!show) {
     return
   }
