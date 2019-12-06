@@ -36,22 +36,24 @@ export const View = () => Gdpr()
 #### full options:
 ```javascript
 Gdpr({
-  show: true,
-  small: false,
-  left: false,
-  right: false,
+  gdpr: {
+    title: 'Title text for the gdpr popup',
+    content: 'String or Array of Magic modules',
+    noCookieText: 'String or Array of Magic modules',
+    noCookieButtonText: 'String or Array of Magic modules',
+    cookieButtonText: 'String or Array of Magic modules',
+    allowAllCookiesButtonText: 'String or Array of Magic modules',
+    allowCookieButtonText: 'String or Array of Magic modules',
+    denyCookieButtonText: 'String or Array of Magic modules',
+    cookieText: 'String or Array of Magic modules',
+    show: true,
+    small: false,
+    left: false,
+    right: false,
+  },
   cookies: [
     ['cookie name 1', { info: 'cookie info text' } ],
     ['cookie name 2', { info: [p('cookie info array'), 'cookie info array' ] }]
   ],
-  title: 'Title text for the gdpr popup',
-  content: 'String or Array of Magic modules',
-  noCookieText: 'String or Array of Magic modules',
-  noCookieButtonText: 'String or Array of Magic modules',
-  cookieButtonText: 'String or Array of Magic modules',
-  allowAllCookiesButtonText: 'String or Array of Magic modules',
-  allowCookieButtonText: 'String or Array of Magic modules',
-  denyCookieButtonText: 'String or Array of Magic modules',
-  cookieText: 'String or Array of Magic modules',
 })
 ```

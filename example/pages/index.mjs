@@ -22,23 +22,25 @@ export const View = () => Gdpr()
   h3({ id: 'usage-arguments' }, 'arguments'),
   Pre(`
 Gdpr({
-  show: false, // || true
-  small: false, // if true, component has 30% of screen.
-  left: false, // popup is positioned to the left if true
-  right: false, // popup is positioned to the right if true
-  title: 'Main popup title',
-  content: [p('text of cookie'), p('popup'),
+  gdpr: {
+    show: false, // || true
+    small: false, // if true, component has 30% of screen.
+    left: false, // popup is positioned to the left if true
+    right: false, // popup is positioned to the right if true
+    title: 'Main popup title',
+    content: [p('text of cookie'), p('popup'),
+    noCookieText: 'String or Array of Magic modules',
+    noCookieButtonText: 'String or Array of Magic modules',
+    cookieButtonText: 'String or Array of Magic modules',
+    allowAllCookiesButtonText: 'String or Array of Magic modules',
+    allowCookieButtonText: 'String or Array of Magic modules',
+    denyCookieButtonText: 'String or Array of Magic modules',
+    cookieText: 'String or Array of Magic modules',
+  },
   cookies: [
     ['name', { info: 'cookie description' }],
     ['cookie 2', { info: [h3('cookie title', 'cookie content'] }],
   ],
-  noCookieText: 'String or Array of Magic modules',
-  noCookieButtonText: 'String or Array of Magic modules',
-  cookieButtonText: 'String or Array of Magic modules',
-  allowAllCookiesButtonText: 'String or Array of Magic modules',
-  allowCookieButtonText: 'String or Array of Magic modules',
-  denyCookieButtonText: 'String or Array of Magic modules',
-  cookieText: 'String or Array of Magic modules',
 })
 `),
 
