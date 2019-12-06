@@ -6,6 +6,11 @@ export const View = ({
   left = false,
   right = false,
   cookies = [],
+  noCookieButtonText,
+  noCookieText,
+  allowCookieButtonText,
+  allowAllCookiesButtonText,
+  denyCookieButtonText,
 }) => {
   if (!show) {
     return
@@ -37,7 +42,7 @@ export const View = ({
                 ),
             ),
           ]
-        : p(gdpr.noCookieText),
+        : p(noCookieText),
 
       cookies.length
         ? [
@@ -47,7 +52,7 @@ export const View = ({
                 for: 'show-hide',
                 onclick: [actions.gdpr.close, { allowed: true }],
               },
-              gdpr.allowAllCookiesButtonText,
+              allowAllCookiesButtonText,
             ),
             label(
               {
@@ -55,7 +60,7 @@ export const View = ({
                 for: 'show-hide',
                 onclick: actions.gdpr.close,
               },
-              gdpr.allowCookieButtonText,
+              allowCookieButtonText,
             ),
             label(
               {
@@ -63,12 +68,12 @@ export const View = ({
                 for: 'show-hide',
                 onclick: [actions.gdpr.close, { allowed: false }],
               },
-              gdpr.denyCookieButtonText,
+              denyCookieButtonText,
             ),
           ]
         : label(
             { class: 'button', for: 'show-hide', onclick: actions.gdpr.close },
-            gdpr.noCookieButtonText,
+            noCookieButtonText,
           ),
     ]),
   ])
@@ -259,6 +264,46 @@ export const propTypes = {
     {
       key: 'cookies',
       type: 'array',
+    },
+    {
+      key: 'title',
+      type: ['string', 'array'],
+    },
+    {
+      key: 'noCookieText',
+      type: ['string', 'array'],
+    },
+    {
+      key: 'noCookieButtonText',
+      type: ['string', 'array'],
+    },
+    {
+      key: cookieButtonText
+      type: ['string', 'array'],
+    },
+    {
+      key:
+      type: ['string', 'array'],
+    },
+
+    {
+      key: 'allowAllCookiesButtonText'
+      type: ['string', 'array'],
+    },
+
+    {
+      key: 'allowCookieButtonText',
+      type: ['string', 'array'],
+    },
+
+    {
+      key: 'denyCookieButtonText',
+      type: ['string', 'array'],
+    },
+
+    {
+      key: 'cookieText',
+      type: ['string', 'array'],
     },
   ],
 }
