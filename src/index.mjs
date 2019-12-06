@@ -17,7 +17,7 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
     return
   }
 
-  const cookies = Object.entries(cookies || {})
+  cookies = Object.entries(cookies || {})
 
   return div({ class: { Gdpr: true, show, small, left, right } }, [
     input({ type: 'checkbox', name: 'show-hide', id: 'show-hide', checked: !show }),
