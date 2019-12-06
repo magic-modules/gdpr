@@ -278,29 +278,21 @@ export const propTypes = {
       type: ['string', 'array'],
     },
     {
-      key: cookieButtonText
+      key: 'cookieButtonText',
       type: ['string', 'array'],
     },
     {
-      key:
+      key: 'allowAllCookiesButtonText',
       type: ['string', 'array'],
     },
-
-    {
-      key: 'allowAllCookiesButtonText'
-      type: ['string', 'array'],
-    },
-
     {
       key: 'allowCookieButtonText',
       type: ['string', 'array'],
     },
-
     {
       key: 'denyCookieButtonText',
       type: ['string', 'array'],
     },
-
     {
       key: 'cookieText',
       type: ['string', 'array'],
