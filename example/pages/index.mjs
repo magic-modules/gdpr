@@ -14,14 +14,12 @@ export const View = state => [
 
   h2({ id: 'usage' }, 'usage:'),
 
-  Pre(`
-// in a page, after install, no import required
-export const View = () => Gdpr()
-`),
+  p('gdpr gets loaded automatically after being installed.'),
+  p('to configure it, add the object below to /src/app.mjs'),
 
-  h3({ id: 'usage-arguments' }, 'arguments'),
   Pre(`
-Gdpr({
+// /src/app.mjs
+export const state = {
   gdpr: {
     show: false, // || true
     small: false, // if true, component has 30% of screen.

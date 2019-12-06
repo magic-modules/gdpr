@@ -28,14 +28,13 @@ npm install --save-exact @magic-modules/gdpr
 ```
 
 #### usage:
-```javascript
-// in any module View
-export const View = () => Gdpr()
-```
+gdpr is different than most modules,
+it gets loaded automatically, once installed.
 
-#### full options:
+to change content and variables, add the following to /src/app.mjs#state
 ```javascript
-Gdpr({
+// src/app.mjs
+export const state = {
   gdpr: {
     title: 'Title text for the gdpr popup',
     content: 'String or Array of Magic modules',
