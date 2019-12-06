@@ -1,0 +1,55 @@
+{
+  "name": "@magic-modules/gdpr",
+  "version": "0.0.1",
+  "author": "Wizards & Witches",
+  "homepage": "https://magic-modules.github.io/gdpr",
+  "license": "AGPL-3.0",
+  "description": "@magic gdpr module. syntax highlighting for javascript.",
+  "main": "src/index.mjs",
+  "module": "src/index.mjs",
+  "type": "module",
+  "engines": {
+    "node": ">=12.2.0"
+  },
+  "scripts": {
+    "start": "t -p",
+    "format": "f -w --exclude docs",
+    "test": "t --exclude docs example config.js",
+    "build": "NODE_ENV=production magic build",
+    "prod": "NODE_ENV=production magic build serve --watch src",
+    "dev": "magic dev --watch src",
+    "calls": "calls"
+  },
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magic-modules/gdpr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/magic-modules/gdpr/issues"
+  },
+  "devDependencies": {
+    "@magic-modules/git-badges": "github:magic-modules/git-badges",
+    "@magic-modules/light-switch": "github:magic-modules/light-switch",
+    "@magic-themes/docs": "github:magic-themes/docs",
+    "@magic/core": "github:magic/core",
+    "@magic/test": "0.1.21"
+  },
+  "keywords": [
+    "syntax",
+    "magic",
+    "gdpr",
+    "component"
+  ],
+  "contributors": [
+    {
+      "name": "jascha ehrenreich",
+      "github": "jaeh"
+    }
+  ],
+  "dependencies": {
+    "@magic-modules/pre": "github:magic-modules/pre"
+  }
+}
