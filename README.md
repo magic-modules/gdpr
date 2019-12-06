@@ -46,5 +46,12 @@ Gdpr({
   ],
   title: 'Title text for the gdpr popup',
   content: 'String or Array of Magic modules',
+  noCookieText: 'String or Array of Magic modules',
+  noCookieButtonText: 'String or Array of Magic modules',
+  cookieButtonText: 'String or Array of Magic modules',
+  allowAllCookiesButtonText: 'String or Array of Magic modules',
+  allowCookieButtonText: 'String or Array of Magic modules',
+  denyCookieButtonText: 'String or Array of Magic modules',
+  cookieText: 'String or Array of Magic modules',
 })
 ```

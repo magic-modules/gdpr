@@ -32,6 +32,13 @@ Gdpr({
     ['name', { info: 'cookie description' }],
     ['cookie 2', { info: [h3('cookie title', 'cookie content'] }],
   ],
+  noCookieText: 'String or Array of Magic modules',
+  noCookieButtonText: 'String or Array of Magic modules',
+  cookieButtonText: 'String or Array of Magic modules',
+  allowAllCookiesButtonText: 'String or Array of Magic modules',
+  allowCookieButtonText: 'String or Array of Magic modules',
+  denyCookieButtonText: 'String or Array of Magic modules',
+  cookieText: 'String or Array of Magic modules',
 })
 `),
 
