@@ -300,12 +300,3 @@ export const propTypes = {
     },
   ],
 }
-
-// export const cookies = {
-//   'test-cookie-name-required': {
-//     info: 'required test cookie info',
-//     required: true,
-//     value: 'test-cookie-value',
-//   },
-//   'test-cookie-name': { info: 'test cookie info', value: 'test-cookie-value' },
-// }
