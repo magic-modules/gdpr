@@ -1,6 +1,6 @@
 ## @magic-modules/gdpr
 
-[https://en.wikipedia.org/wiki/General_Data_Protection_Regulation](gdpr) compliance for [@magic](https://magic.github.io/core)
+[gdpr](https://en.wikipedia.org/wiki/General_Data_Protection_Regulation) compliance for [@magic](https://magic.github.io/core)
 
 [![NPM version][npm-image]][npm-url]
 [![Linux Build Status][travis-image]][travis-url]
