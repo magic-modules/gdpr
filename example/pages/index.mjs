@@ -10,7 +10,7 @@ export const View = state => [
   GitBadges('magic-modules/gdpr'),
 
   h2({ id: 'installation' }, 'installation:'),
-  Pre('npm install magic-modules/gdpr'),
+  Pre('npm install @magic-modules/gdpr'),
 
   h2({ id: 'usage' }, 'usage:'),
 
