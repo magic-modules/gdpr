@@ -166,16 +166,18 @@ export const effects = {
 export const style = (vars = {}) => ({
   bottom: '0.5em',
   position: 'fixed',
-  width: '100%',
+  width: '50%',
   opacity: 0,
   animation: 'showGdpr 1s 1s forwards',
-  left: 0,
+  left: '25%',
   textAlign: 'center',
 
   '&.small': {
-    width: '30%',
+    width: '32.999%',
+    left: '33%',
+
     '&.right': {
-      width: '30%',
+      width: '32.999%',
       left: 'auto',
       right: '0.5em',
     },
