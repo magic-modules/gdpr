@@ -67,3 +67,6 @@ use @magic npm packages instead of github for installs
 
 ##### 0.0.3
 remove unneeded dependency
+
+##### 0.0.4
+fix link in readme
