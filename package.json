@@ -39,10 +39,10 @@
     "@magic/test": "0.1.23"
   },
   "keywords": [
-    "syntax",
     "magic",
     "gdpr",
-    "component"
+    "module",
+    "hyperapp"
   ],
   "contributors": [
     {
