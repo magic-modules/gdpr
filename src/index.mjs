@@ -229,7 +229,8 @@ export const style = (vars = {}) => ({
 
   '.button': {
     display: 'inline-block',
-    margin: '1em 0 0',
+    maxWidth: '30%',
+    margin: '1em 3% 0 0',
   },
 
   '@keyframes showGdpr': {
