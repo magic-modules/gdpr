@@ -165,23 +165,11 @@ export const actions = {
 export const style = (vars = {}) => ({
   bottom: '0.5em',
   position: 'fixed',
-  width: '50%',
   opacity: 0,
   animation: 'showGdpr 1s 1s forwards',
-  left: '25%',
+  left: '5%',
   textAlign: 'center',
-
-  '&.small': {
-    width: '33.332%',
-    left: '33.332%',
-  },
-  '&.small.right, &.right': {
-    left: 'auto',
-    right: '0.5em',
-  },
-  '&.small.left, &.left': {
-    left: '0.5em',
-  },
+  width: '90%',
 
   ul: {
     display: 'block',
@@ -229,6 +217,33 @@ export const style = (vars = {}) => ({
 
   '.button': {
     display: 'inline-block',
+    margin: '0 0 0.5em',
+    width: '100%',
+  },
+
+  '@media screen and (min-width: 600px)': {
+    width: '50%',
+    left: '25%',
+
+    '&.small.right, &.right': {
+      left: 'auto',
+      right: '0.5em',
+    },
+    '&.small.left, &.left': {
+      left: '0.5em',
+    },
+  },
+
+  '@media screen and (min-width: 900px)': {
+    '&.small': {
+      width: '33.332%',
+      left: '33.332%',
+    },
+
+    '.button': {
+      width: '30%',
+      margin: '1em 3% 0 0',
+    },
   },
 
   '@keyframes showGdpr': {
