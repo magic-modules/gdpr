@@ -9,19 +9,6 @@
 [![Greenkeeper badge][greenkeeper-image]][greenkeeper-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 
-[npm-image]: https://img.shields.io/npm/v/@magic-modules/gdpr.svg
-[npm-url]: https://www.npmjs.com/package/@magic-modules/gdpr
-[travis-image]: https://img.shields.io/travis/com/magic-modules/gdpr/master
-[travis-url]: https://travis-ci.com/magic-modules/gdpr
-[appveyor-image]: https://img.shields.io/appveyor/ci/magicmodules/gdpr/master.svg
-[appveyor-url]: https://ci.appveyor.com/project/magicmodules/gdpr/branch/master
-[coveralls-image]: https://coveralls.io/repos/github/magic-modules/gdpr/badge.svg
-[coveralls-url]: https://coveralls.io/github/magic-modules/gdpr
-[greenkeeper-image]: https://badges.greenkeeper.io/magic-modules/gdpr.svg
-[greenkeeper-url]: https://badges.greenkeeper.io/magic-modules/gdpr.svg
-[snyk-image]: https://snyk.io/test/github/magic-modules/gdpr/badge.svg
-[snyk-url]: https://snyk.io/test/github/magic-modules/gdpr
-
 #### install:
 ```bash
 npm install --save-exact @magic-modules/gdpr
@@ -73,3 +60,17 @@ fix link in readme
 
 ##### 0.0.5 - unreleased
 use @magic-libraries/db as store
+
+
+[npm-image]: https://img.shields.io/npm/v/@magic-modules/gdpr.svg
+[npm-url]: https://www.npmjs.com/package/@magic-modules/gdpr
+[travis-image]: https://img.shields.io/travis/com/magic-modules/gdpr/master
+[travis-url]: https://travis-ci.com/magic-modules/gdpr
+[appveyor-image]: https://img.shields.io/appveyor/ci/magicmodules/gdpr/master.svg
+[appveyor-url]: https://ci.appveyor.com/project/magicmodules/gdpr/branch/master
+[coveralls-image]: https://coveralls.io/repos/github/magic-modules/gdpr/badge.svg
+[coveralls-url]: https://coveralls.io/github/magic-modules/gdpr
+[greenkeeper-image]: https://badges.greenkeeper.io/magic-modules/gdpr.svg
+[greenkeeper-url]: https://badges.greenkeeper.io/magic-modules/gdpr.svg
+[snyk-image]: https://snyk.io/test/github/magic-modules/gdpr/badge.svg
+[snyk-url]: https://snyk.io/test/github/magic-modules/gdpr
