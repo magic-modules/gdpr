@@ -58,9 +58,11 @@ remove unneeded dependency
 ##### 0.0.4
 fix link in readme
 
-##### 0.0.5 - unreleased
+##### 0.0.5
 use @magic-libraries/db as store
 
+##### 0.0.6 - unreleased
+...
 
 [npm-image]: https://img.shields.io/npm/v/@magic-modules/gdpr.svg
 [npm-url]: https://www.npmjs.com/package/@magic-modules/gdpr
