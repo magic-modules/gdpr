@@ -70,3 +70,6 @@ remove unneeded dependency
 
 ##### 0.0.4
 fix link in readme
+
+##### 0.0.5 - unreleased
+use @magic-libraries/db as store

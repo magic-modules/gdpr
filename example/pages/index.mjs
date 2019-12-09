@@ -7,6 +7,12 @@ export const View = state => [
     state.description,
   ]),
 
+  Pre(
+    Object.entries(state.gdpr)
+      .map(([k, v]) => `${k}: ${v}`)
+      .join('\n'),
+  ),
+
   GitBadges('magic-modules/gdpr'),
 
   h2({ id: 'installation' }, 'installation:'),
@@ -26,7 +32,7 @@ export const state = {
     left: false, // popup is positioned to the left if true
     right: false, // popup is positioned to the right if true
     title: 'Main popup title',
-    content: [p('text of cookie'), p('popup'),
+    content: 'text of cookie popup',
     noCookieText: 'String or Array of Magic modules',
     noCookieButtonText: 'String or Array of Magic modules',
     cookieButtonText: 'String or Array of Magic modules',
@@ -36,8 +42,8 @@ export const state = {
     cookieText: 'String or Array of Magic modules',
   },
   cookies: [
-    ['name', { info: 'cookie description' }],
-    ['cookie 2', { info: [h3('cookie title', 'cookie content'] }],
+    ['name', { title: 'cookie1 title', content: 'cookie description' }],
+    ['cookie 2', { title: 'cookie title', content: 'cookie content' }],
   ],
 })
 `),
