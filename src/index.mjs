@@ -1,57 +1,56 @@
 export const View = ({ gdpr = {}, cookies = [] }) => {
   const {
-    title,
-    content,
     show = true,
     small = false,
     left = false,
     right = false,
-    noCookieButtonText,
-    noCookieText,
-    allowCookieButtonText,
-    allowAllCookiesButtonText,
-    denyCookieButtonText,
+    title = 'Magic Privacy Information',
+    noCookieText = 'This page does neither save, collect, nor share any personal data about you.',
+    noCookieButtonText = 'Awesome.',
+    allowAllCookiesButtonText = 'Allow all',
+    allowCookieButtonText = 'Allow selected',
+    denyCookieButtonText = 'Deny all',
+    cookieText = 'We are using the following data on this page.',
   } = gdpr
 
   if (!show) {
     return
   }
 
-  cookies = Object.entries(cookies || {})
+  const hasCookies = !!cookies.length
+
+  const content = hasCookies ? cookieText : noCookieText
 
   return div({ class: { Gdpr: true, show, small, left, right } }, [
     input({ type: 'checkbox', name: 'show-hide', id: 'show-hide', checked: !show }),
     div({ class: 'Container' }, [
       title && h3(title),
       content && p(content),
-      !!cookies.length
-        ? [
-            cookieText && p(cookieText),
-            ul(
-              cookies
-                .sort(([_, { required }]) => (required ? 0 : 1))
-                .map(([name, { info, allowed = false }]) =>
-                  li([
-                    input({
-                      type: 'checkbox',
-                      title: 'allow',
-                      checked: allowed,
-                      onchange: [actions.gdpr.allow, { name }],
-                    }),
-                    label([name, info && [' - ', info]]),
-                  ]),
-                ),
-            ),
-          ]
-        : p(noCookieText),
+      hasCookies && [
+        ul(
+          cookies.map(({ name, title, content, allowed = false }) =>
+            li({ class: 'Cookie' }, [
+              input({
+                type: 'checkbox',
+                title: 'allow',
+                id: name,
+                checked: gdpr.allowed.includes(name),
+                onchange: [actions.gdpr.toggleAllow, { name }],
+              }),
+              (title || content) &&
+                label({ for: name }, [title && h4(title), content && p(content)]),
+            ]),
+          ),
+        ),
+      ],
 
-      cookies.length
+      hasCookies
         ? [
             label(
               {
                 class: 'button',
                 for: 'show-hide',
-                onclick: [actions.gdpr.close, { allowed: true }],
+                onclick: actions.gdpr.allow,
               },
               allowAllCookiesButtonText,
             ),
@@ -67,7 +66,7 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
               {
                 class: 'button',
                 for: 'show-hide',
-                onclick: [actions.gdpr.close, { allowed: false }],
+                onclick: actions.gdpr.deny,
               },
               denyCookieButtonText,
             ),
@@ -82,84 +81,84 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
 
 export const state = {
   show: true,
-  cookies: {},
-  title: 'Magic Privacy Information',
-  noCookieText: 'This page does neither save, collect, nor share any personal data about you.',
-  noCookieButtonText: 'Awesome.',
-  cookieButtonText: 'Awesome.',
-  allowAllCookiesButtonText: 'Allow all',
-  allowCookieButtonText: 'Allow selected',
-  denyCookieButtonText: 'Deny all',
-  cookieText: 'We are using the following cookies on this page',
+  allowed: [],
 }
 
 export const actions = {
   gdpr: {
-    show: (state, p) => ({
-      ...state,
-      gdpr: {
-        ...state.gdpr,
-        ...p.value,
-      },
-    }),
-
-    load: state => [
-      state,
-      [effects.gdpr.readLocalStorage, { key: 'magic-gdpr', action: actions.gdpr.show }],
-    ],
-
-    close: (state, { allowed }) => {
-      const { cookies } = state
-      if (typeof allowed === 'boolean') {
-        Object.entries(cookies).forEach(([name, cookie]) => {
-          cookies[name] = {
-            ...cookie,
-            allowed,
-          }
-        })
+    show: (state, props) => {
+      if (props.value) {
+        state.gdpr = {
+          ...state.gdpr,
+          ...props.value,
+        }
       }
 
-      return [
+      return state
+    },
+
+    load: state => [state, [lib.db.get, { key: 'magic-gdpr', action: actions.gdpr.show }]],
+
+    close: state => [
+      {
+        ...state,
+        gdpr: {
+          ...state.gdpr,
+          show: false,
+        },
+      },
+      [
+        lib.db.set,
         {
-          ...state,
-          gdpr: {
-            ...state.gdpr,
+          key: 'magic-gdpr',
+          value: {
+            allowed: state.gdpr.allowed,
             show: false,
           },
-          cookies,
+          action: actions.gdpr.show,
         },
-        [
-          effects.gdpr.writeLocalStorage,
-          { key: 'magic-gdpr', value: { cookies: state.cookies || [], show: false } },
-        ],
-      ]
-    },
-    allow: (state, props) => {
-      state.cookies[props.name].allowed = true
+      ],
+    ],
+
+    allow: state => [
+      {
+        ...state,
+        gdpr: {
+          ...state.gdpr,
+          show: false,
+        },
+      },
+      [
+        lib.db.set,
+        {
+          key: 'magic-gdpr',
+          value: {
+            allowed: state.cookies.map(c => c.name),
+            show: false,
+          },
+          action: actions.gdpr.show,
+        },
+      ],
+    ],
+
+    toggleAllow: (state, { name }) => {
+      const { gdpr } = state
+
+      const active = gdpr.allowed.includes(name)
+
+      if (!active) {
+        gdpr.allowed.push(name)
+      } else {
+        gdpr.allowed = gdpr.allowed.filter(c => c !== name)
+      }
+
       return {
         ...state,
+        gdpr,
       }
     },
-  },
-}
 
-export const effects = {
-  gdpr: {
-    writeLocalStorage: (_, { key, value }) => {
-      const localStorage = window.localStorage || {}
-      localStorage[key] = JSON.stringify(value)
-    },
-
-    readLocalStorage: (dispatch, { key, action }) => {
-      const localStorage = window.localStorage || {}
-
-      let value = localStorage[key]
-      if (typeof value !== 'undefined') {
-        value = JSON.parse(value)
-      }
-
-      dispatch(action, { key, value })
-    },
+    deny: state => [state, [lib.db.del, { key: 'magic-gdpr', action: actions.gdpr.show }]],
   },
 }
 
@@ -173,17 +172,15 @@ export const style = (vars = {}) => ({
   textAlign: 'center',
 
   '&.small': {
-    width: '32.999%',
-    left: '33%',
-
-    '&.right': {
-      width: '32.999%',
-      left: 'auto',
-      right: '0.5em',
-    },
-    '&.left': {
-      left: '0.5em',
-    },
+    width: '33.332%',
+    left: '33.332%',
+  },
+  '&.small.right, &.right': {
+    left: 'auto',
+    right: '0.5em',
+  },
+  '&.small.left, &.left': {
+    left: '0.5em',
   },
 
   ul: {
@@ -195,7 +192,7 @@ export const style = (vars = {}) => ({
     border: '1px solid',
     borderRadius: '.5em',
     color: vars.colors.gray[100],
-    display: 'inline-block',
+    display: 'block',
     margin: '0 auto',
     padding: '1em',
     position: 'relative',
@@ -223,6 +220,11 @@ export const style = (vars = {}) => ({
   h3: {
     padding: 0,
     margin: 0,
+  },
+
+  h4: {
+    display: 'inline',
+    fontWeight: 'bold',
   },
 
   '.button': {
@@ -270,35 +272,31 @@ export const propTypes = {
     },
     {
       key: 'title',
-      type: ['string', 'array'],
+      type: 'string',
     },
     {
       key: 'noCookieText',
-      type: ['string', 'array'],
+      type: 'string',
     },
     {
       key: 'noCookieButtonText',
-      type: ['string', 'array'],
-    },
-    {
-      key: 'cookieButtonText',
-      type: ['string', 'array'],
+      type: 'string',
     },
     {
       key: 'allowAllCookiesButtonText',
-      type: ['string', 'array'],
+      type: 'string',
     },
     {
       key: 'allowCookieButtonText',
-      type: ['string', 'array'],
+      type: 'string',
     },
     {
       key: 'denyCookieButtonText',
-      type: ['string', 'array'],
+      type: 'string',
     },
     {
       key: 'cookieText',
-      type: ['string', 'array'],
+      type: 'string',
     },
   ],
 }
