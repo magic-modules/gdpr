@@ -61,7 +61,10 @@ fix link in readme
 ##### 0.0.5
 use @magic-libraries/db as store
 
-##### 0.0.6 - unreleased
+##### 0.0.6
+make responsive
+
+##### 0.0.7 - unreleased
 ...
 
 [npm-image]: https://img.shields.io/npm/v/@magic-modules/gdpr.svg
