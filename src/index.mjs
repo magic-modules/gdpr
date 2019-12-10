@@ -5,12 +5,11 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
     left = false,
     right = false,
     title = 'Magic Privacy Information',
-    noCookieText = 'This page does neither save, collect, nor share any personal data about you.',
+    content = 'Cookie notice content. always shown.',
     noCookieButtonText = 'Awesome.',
     allowAllCookiesButtonText = 'Allow all',
     allowCookieButtonText = 'Allow selected',
     denyCookieButtonText = 'Deny all',
-    cookieText = 'We are using the following data on this page.',
   } = gdpr
 
   if (!show) {
@@ -18,8 +17,6 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
   }
 
   const hasCookies = !!cookies.length
-
-  const content = hasCookies ? cookieText : noCookieText
 
   return div({ class: { Gdpr: true, show, small, left, right } }, [
     input({ type: 'checkbox', name: 'show-hide', id: 'show-hide', checked: !show }),
@@ -222,8 +219,9 @@ export const style = (vars = {}) => ({
   },
 
   '@media screen and (min-width: 600px)': {
-    width: '50%',
+    maxWidth: '50%',
     left: '25%',
+    width: 'auto',
 
     '&.small.right, &.right': {
       left: 'auto',
@@ -238,7 +236,6 @@ export const style = (vars = {}) => ({
     '&.small': {
       left: '33.332%',
       maxWidth: '33.332%',
-      width: 'auto',
     },
 
     '.button': {
@@ -291,10 +288,6 @@ export const propTypes = {
       type: 'string',
     },
     {
-      key: 'noCookieText',
-      type: 'string',
-    },
-    {
       key: 'noCookieButtonText',
       type: 'string',
     },
@@ -308,10 +301,6 @@ export const propTypes = {
     },
     {
       key: 'denyCookieButtonText',
-      type: 'string',
-    },
-    {
-      key: 'cookieText',
       type: 'string',
     },
   ],
