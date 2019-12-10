@@ -48,7 +48,7 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
         ? [
             label(
               {
-                class: 'button',
+                class: 'button allow all',
                 for: 'show-hide',
                 onclick: actions.gdpr.allow,
               },
@@ -56,7 +56,7 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
             ),
             label(
               {
-                class: 'button',
+                class: 'button allow',
                 for: 'show-hide',
                 onclick: actions.gdpr.close,
               },
@@ -64,7 +64,7 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
             ),
             label(
               {
-                class: 'button',
+                class: 'button allow none',
                 for: 'show-hide',
                 onclick: actions.gdpr.deny,
               },
@@ -236,13 +236,15 @@ export const style = (vars = {}) => ({
 
   '@media screen and (min-width: 900px)': {
     '&.small': {
-      width: '33.332%',
       left: '33.332%',
+      maxWidth: '33.332%',
+      width: 'auto',
     },
 
     '.button': {
-      maxWidth: '30%',
       margin: '1em 3% 0 0',
+      maxWidth: '30%',
+      width: 'auto',
     },
   },
 
