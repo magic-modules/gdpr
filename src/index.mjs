@@ -241,7 +241,7 @@ export const style = (vars = {}) => ({
     },
 
     '.button': {
-      width: '30%',
+      maxWidth: '30%',
       margin: '1em 3% 0 0',
     },
   },
