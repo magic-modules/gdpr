@@ -5,7 +5,7 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
     left = false,
     right = false,
     title = 'Magic Privacy Information',
-    content = 'Cookie notice content. always shown.',
+    content = 'This app neither saves, collects, nor shares any data about you.',
     noCookieButtonText = 'Awesome.',
     allowAllCookiesButtonText = 'Allow all',
     allowCookieButtonText = 'Allow selected',
