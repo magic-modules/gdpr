@@ -1,6 +1,6 @@
 export const View = ({ gdpr = {}, cookies = [] }) => {
   const {
-    show = true,
+    show,
     small = false,
     left = false,
     right = false,
@@ -9,7 +9,7 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
     noCookieButtonText = 'Awesome.',
     allowAllCookiesButtonText = 'Allow all',
     allowCookieButtonText = 'Allow selected',
-    denyCookieButtonText = 'Deny all',
+    denyCookieButtonText = 'Deny all personal data',
   } = gdpr
 
   if (!show) {
@@ -18,7 +18,7 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
 
   const hasCookies = !!cookies.length
 
-  return div({ class: { Gdpr: true, show, small, left, right } }, [
+  return div({ class: { Gdpr: true, small, left, right } }, [
     input({ type: 'checkbox', name: 'show-hide', id: 'show-hide', checked: !show }),
     div({ class: 'Container' }, [
       title && h3(title),
@@ -84,12 +84,17 @@ export const state = {
 export const actions = {
   gdpr: {
     show: (state, props) => {
-      if (props.value) {
+      let { show } = props
+      if (typeof props.value.show !== 'undefined') {
+        show = props.value.show
+      }
+
+      if (typeof show !== 'undefined') {
         return {
           ...state,
           gdpr: {
             ...state.gdpr,
-            ...props.value,
+            show,
           },
         }
       }
@@ -116,7 +121,7 @@ export const actions = {
             allowed: state.gdpr.allowed,
             show: false,
           },
-          action: actions.gdpr.show,
+          action: [actions.gdpr.show, { show: false }],
         },
       ],
     ],
@@ -137,7 +142,7 @@ export const actions = {
             allowed: state.cookies.map(c => c.name),
             show: false,
           },
-          action: actions.gdpr.show,
+          action: [actions.gdpr.show, { show: false }],
         },
       ],
     ],
@@ -159,7 +164,13 @@ export const actions = {
       }
     },
 
-    deny: state => [state, [lib.db.del, { key: 'magic-gdpr', action: actions.gdpr.show }]],
+    deny: state => [
+      state,
+      [
+        lib.db.set,
+        { key: 'magic-gdpr', value: { allowed: [], show: false }, action: [actions.gdpr.show, { show: false }] },
+      ],
+    ],
   },
 }
 
