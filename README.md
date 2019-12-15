@@ -65,6 +65,7 @@ use @magic-libraries/db as store
 make responsive
 
 ##### 0.0.7 - unreleased
+prevent unneeded redraws for show function
 ...
 
 [npm-image]: https://img.shields.io/npm/v/@magic-modules/gdpr.svg
