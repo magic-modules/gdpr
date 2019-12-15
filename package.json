@@ -4,7 +4,7 @@
   "author": "Wizards & Witches",
   "homepage": "https://magic-modules.github.io/gdpr",
   "license": "AGPL-3.0",
-  "description": "@magic gdpr module. syntax highlighting for javascript.",
+  "description": "@magic gdpr module. shows a popup with cookie info.",
   "main": "src/index.mjs",
   "module": "src/index.mjs",
   "type": "module",
