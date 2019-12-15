@@ -64,8 +64,14 @@ use @magic-libraries/db as store
 ##### 0.0.6
 make responsive
 
-##### 0.0.7 - unreleased
-prevent unneeded redraws for show function
+##### 0.0.7
+actions.show:
+  * prevent unneeded redraws
+  * fix behaviour if localstorage is denied
+  * always save allowed data and show state in localStorage. 
+    never sent to server, not enough to identify users.
+
+##### 0.0.8 - unreleased
 ...
 
 [npm-image]: https://img.shields.io/npm/v/@magic-modules/gdpr.svg
