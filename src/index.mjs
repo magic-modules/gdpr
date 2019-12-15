@@ -85,12 +85,16 @@ export const actions = {
   gdpr: {
     show: (state, props) => {
       if (props.value) {
-        state.gdpr = {
-          ...state.gdpr,
-          ...props.value,
+        return {
+          ...state,
+          gdpr: {
+            ...state.gdpr,
+            ...props.value,
+          },
         }
       }
 
+      // return unchanged, no redraw
       return state
     },
 
