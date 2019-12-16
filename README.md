@@ -72,7 +72,10 @@ actions.show:
     never sent to server, not enough to identify users.
 style: remove a lot of complexity, styles should be overwritten in themes/app, not in module code
 
-##### 0.0.8 - unreleased
+##### 0.0.8
+bugfix, props.value might be undefined
+
+##### 0.0.9 - unreleased
 ...
 
 [npm-image]: https://img.shields.io/npm/v/@magic-modules/gdpr.svg
