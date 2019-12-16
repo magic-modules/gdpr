@@ -1,9 +1,6 @@
 export const View = ({ gdpr = {}, cookies = [] }) => {
   const {
     show,
-    small = false,
-    left = false,
-    right = false,
     title = 'Magic Privacy Information',
     content = 'This app neither saves, collects, nor shares any data about you.',
     noCookieButtonText = 'Awesome.',
@@ -18,7 +15,7 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
 
   const hasCookies = !!cookies.length
 
-  return div({ class: { Gdpr: true, small, left, right } }, [
+  return div({ class: 'Gdpr' }, [
     input({ type: 'checkbox', name: 'show-hide', id: 'show-hide', checked: !show }),
     div({ class: 'Container' }, [
       title && h3(title),
@@ -29,7 +26,7 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
             li({ class: 'Cookie' }, [
               input({
                 type: 'checkbox',
-                title: 'allow',
+                title: `allow ${name} data`,
                 id: name,
                 checked: gdpr.allowed.includes(name),
                 onchange: [actions.gdpr.toggleAllow, { name }],
@@ -179,9 +176,9 @@ export const style = (vars = {}) => ({
   position: 'fixed',
   opacity: 0,
   animation: 'showGdpr 1s 1s forwards',
-  left: '5%',
+  left: '3%',
+  maxWidth: '94%',
   textAlign: 'center',
-  width: '90%',
 
   ul: {
     display: 'block',
@@ -192,8 +189,7 @@ export const style = (vars = {}) => ({
     border: '1px solid',
     borderRadius: '.5em',
     color: vars.colors.gray[100],
-    display: 'block',
-    margin: '0 auto',
+    display: 'inline-block',
     padding: '1em',
     position: 'relative',
     textAlign: 'left',
@@ -233,26 +229,7 @@ export const style = (vars = {}) => ({
     width: '100%',
   },
 
-  '@media screen and (min-width: 600px)': {
-    maxWidth: '50%',
-    left: '25%',
-    width: 'auto',
-
-    '&.small.right, &.right': {
-      left: 'auto',
-      right: '0.5em',
-    },
-    '&.small.left, &.left': {
-      left: '0.5em',
-    },
-  },
-
   '@media screen and (min-width: 900px)': {
-    '&.small': {
-      left: '33.332%',
-      maxWidth: '33.332%',
-    },
-
     '.button': {
       margin: '1em 3% 0 0',
       maxWidth: '30%',
@@ -280,18 +257,6 @@ export const propTypes = {
   Gdpr: [
     {
       key: 'show',
-      type: 'boolean',
-    },
-    {
-      key: 'small',
-      type: 'boolean',
-    },
-    {
-      key: 'right',
-      type: 'boolean',
-    },
-    {
-      key: 'left',
       type: 'boolean',
     },
     {
