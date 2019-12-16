@@ -70,6 +70,7 @@ actions.show:
   * fix behaviour if localstorage is denied
   * always save allowed data and show state in localStorage. 
     never sent to server, not enough to identify users.
+style: remove a lot of complexity, styles should be overwritten in themes/app, not in module code
 
 ##### 0.0.8 - unreleased
 ...
