@@ -225,7 +225,7 @@ export const style = (vars = {}) => ({
 
   '.button': {
     display: 'inline-block',
-    margin: '0 0 0.5em',
+    margin: '0.5em 0',
     width: '100%',
   },
 
