@@ -82,7 +82,7 @@ export const actions = {
   gdpr: {
     show: (state, props) => {
       let { show } = props
-      if (typeof props.value.show !== 'undefined') {
+      if (props.value && typeof props.value.show !== 'undefined') {
         show = props.value.show
       }
 
