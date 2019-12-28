@@ -83,7 +83,10 @@ bugfix, props.value might be undefined
 ##### 0.0.9
 simplify api, add hoisting information to docs
 
-##### 0.0.10 - unreleased
+##### 0.0.10
+use magic.init to propagate init step.
+
+##### 0.0.11 - unreleased
 ...
 
 
