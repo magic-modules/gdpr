@@ -4,4 +4,6 @@ export default {
   URL: 'magic-modules.github.io/gpdr',
   PUBLIC: 'docs',
   THEME: 'docs',
+
+  HOIST: 'Gdpr',
 }
