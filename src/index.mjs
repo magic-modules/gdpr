@@ -67,10 +67,7 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
               denyText,
             ),
           ]
-        : label(
-            { class: 'button', for: 'show-hide', onclick: actions.gdpr.close },
-            noDataText,
-          ),
+        : label({ class: 'button', for: 'show-hide', onclick: actions.gdpr.close }, noDataText),
     ]),
   ])
 }
@@ -167,7 +164,11 @@ export const actions = {
       state,
       [
         lib.db.set,
-        { key: 'magic-gdpr', value: { allowed: [], show: false }, action: [actions.gdpr.show, { show: false }] },
+        {
+          key: 'magic-gdpr',
+          value: { allowed: [], show: false },
+          action: [actions.gdpr.show, { show: false }],
+        },
       ],
     ],
   },
@@ -288,6 +289,6 @@ export const propTypes = {
     {
       key: 'allowTitle',
       type: 'string',
-    }
+    },
   ],
 }

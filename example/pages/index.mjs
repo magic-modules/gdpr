@@ -21,8 +21,8 @@ export const View = state => [
   h2({ id: 'usage' }, 'usage:'),
 
   h3('activate:'),
-p('to activate Gdpr, add it to the list of hoisted modules'),
-Pre(`
+  p('to activate Gdpr, add it to the list of hoisted modules'),
+  Pre(`
 // src/config.mjs
 export default {
   // ... other config variables
@@ -30,9 +30,9 @@ export default {
   HOIST: ['Gdpr'],
 }
 `),
-p('after doing this, the gdpr module will show up.'),
+  p('after doing this, the gdpr module will show up.'),
 
-h3('change contents, add cookies:'),
+  h3('change contents, add cookies:'),
 
   Pre(`
 // /src/app.mjs
