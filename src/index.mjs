@@ -99,8 +99,6 @@ export const actions = {
       return state
     },
 
-    load: state => [state, [lib.db.get, { key: 'magic-gdpr', action: actions.gdpr.show }]],
-
     close: state => [
       {
         ...state,
@@ -292,3 +290,5 @@ export const propTypes = {
     },
   ],
 }
+
+export const init = `[lib.db.get, { key: 'magic-gdpr', action: actions.gdpr.show }]`
