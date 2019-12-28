@@ -80,8 +80,12 @@ style: remove a lot of complexity, styles should be overwritten in themes/app, n
 ##### 0.0.8
 bugfix, props.value might be undefined
 
-##### 0.0.9 - unreleased
+##### 0.0.9
+simplify api, add hoisting information to docs
+
+##### 0.0.10 - unreleased
 ...
+
 
 [npm-image]: https://img.shields.io/npm/v/@magic-modules/gdpr.svg
 [npm-url]: https://www.npmjs.com/package/@magic-modules/gdpr
