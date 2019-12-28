@@ -15,9 +15,20 @@ npm install --save-exact @magic-modules/gdpr
 ```
 
 #### usage:
-gdpr is different than most modules,
-it gets loaded automatically, once installed.
 
+##### activate:
+to activate Gdpr, add it to the list of hoisted modules
+```javascript
+// src/config.mjs
+export default {
+  // ... other config variables
+
+  HOIST: ['Gdpr'],
+}
+```
+after doing this, the gdpr module will show up.
+
+##### change text:
 to change content and variables, add the following to /src/app.mjs#state
 ```javascript
 // src/app.mjs
@@ -25,17 +36,11 @@ export const state = {
   gdpr: {
     title: 'Title text for the gdpr popup',
     content: 'String or Array of Magic modules',
-    noCookieText: 'String or Array of Magic modules',
-    noCookieButtonText: 'String or Array of Magic modules',
-    cookieButtonText: 'String or Array of Magic modules',
-    allowAllCookiesButtonText: 'String or Array of Magic modules',
-    allowCookieButtonText: 'String or Array of Magic modules',
-    denyCookieButtonText: 'String or Array of Magic modules',
-    cookieText: 'String or Array of Magic modules',
-    show: true,
-    small: false,
-    left: false,
-    right: false,
+    noDataText: 'Button text if no cookies are defined',
+    allowTitle: 'Title above the three cookie buttons',
+    allowAllText: 'button text for allow all data',
+    allowText: 'button text for allow selected data',
+    denyText: 'button text for no data allowed',
   },
   cookies: [
     ['cookie name 1', { info: 'cookie info text' } ],
@@ -68,7 +73,7 @@ make responsive
 actions.show:
   * prevent unneeded redraws
   * fix behaviour if localstorage is denied
-  * always save allowed data and show state in localStorage. 
+  * always save allowed data and show state in localStorage.
     never sent to server, not enough to identify users.
 style: remove a lot of complexity, styles should be overwritten in themes/app, not in module code
 

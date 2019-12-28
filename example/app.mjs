@@ -9,14 +9,15 @@ export const state = {
     { to: '/#source', text: 'source' },
   ],
   gdpr: {
-    allowAllCookiesButtonText: 'allow all data',
-    allowCookieButtonText: 'allow selected',
+    allowAllText: 'allow',
+    allowText: 'selected',
+    allowTitle: 'Title above the three cookie buttons',
     allowed: [],
-    content: 'Cookie popup main content text.',
-    cookieButtonText: 'cookie Button text',
-    denyCookieButtonText: 'deny personal data',
-    noCookieButtonText: 'no Cookie Button text',
-    title: 'Main popup title',
+    content: 'Popup content text',
+    denyText: 'none',
+    noDataText: 'Button text if no cookies are defined',
+    show: true,
+    title: 'Popup title',
   },
 
   cookies: [

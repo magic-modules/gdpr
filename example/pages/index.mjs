@@ -20,26 +20,31 @@ export const View = state => [
 
   h2({ id: 'usage' }, 'usage:'),
 
-  p('gdpr gets loaded automatically after being installed.'),
-  p('to configure it, add the object below to /src/app.mjs'),
+  h3('activate:'),
+p('to activate Gdpr, add it to the list of hoisted modules'),
+Pre(`
+// src/config.mjs
+export default {
+  // ... other config variables
+
+  HOIST: ['Gdpr'],
+}
+`),
+p('after doing this, the gdpr module will show up.'),
+
+h3('change contents, add cookies:'),
 
   Pre(`
 // /src/app.mjs
 export const state = {
   gdpr: {
-    show: false, // || true
-    small: false, // if true, component has 30% of screen.
-    left: false, // popup is positioned to the left if true
-    right: false, // popup is positioned to the right if true
-    title: 'Main popup title',
-    content: 'text of cookie popup',
-    noCookieText: 'String or Array of Magic modules',
-    noCookieButtonText: 'String or Array of Magic modules',
-    cookieButtonText: 'String or Array of Magic modules',
-    allowAllCookiesButtonText: 'String or Array of Magic modules',
-    allowCookieButtonText: 'String or Array of Magic modules',
-    denyCookieButtonText: 'String or Array of Magic modules',
-    cookieText: 'String or Array of Magic modules',
+    allowAllText: 'button text for allow all data',
+    allowText: 'button text for allow selected data',
+    allowTitle: 'Title above the three cookie buttons',
+    content: 'String or Array of Magic modules',
+    denyText: 'button text for no data allowed',
+    noDataText: 'Button text if no cookies are defined',
+    title: 'Title text for the gdpr popup',
   },
   cookies: [
     ['name', { title: 'cookie1 title', content: 'cookie description' }],
