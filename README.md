@@ -97,6 +97,7 @@ use magic.init to propagate init step.
 * make svg lose 600 bytes.
 
 ##### 0.0.13 - unreleased
+* add cursor: pointer to cookie button
 ...
 
 
