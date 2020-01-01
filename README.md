@@ -93,6 +93,10 @@ use magic.init to propagate init step.
 * state now correctly gets reset on allow and deny
 
 ##### 0.0.12 - unreleased
+* logic changes in actions.gdpr.show
+
+
+##### 0.0.13 - unreleased
 ...
 
 
