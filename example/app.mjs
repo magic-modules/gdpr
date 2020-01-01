@@ -9,7 +9,7 @@ export const state = {
     { to: '/#source', text: 'source' },
   ],
   gdpr: {
-    allowAllText: 'allow',
+    allowAllText: 'all',
     allowText: 'selected',
     allowTitle: 'Title above the three cookie buttons',
     allowed: [],
