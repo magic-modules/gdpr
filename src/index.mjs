@@ -5,9 +5,9 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
     content = 'This app neither saves, collects, nor shares any data about you.',
     noDataText = 'Awesome.',
     allowTitle = 'Allow:',
-    allowAllText = 'all',
-    allowText = 'selected',
-    denyText = 'none',
+    allowAllText = 'All',
+    allowText = 'Selected',
+    denyText = 'None',
   } = gdpr
 
   if (!show) {
@@ -111,17 +111,17 @@ export const actions = {
   gdpr: {
     show: (state, props) => {
       let { show } = props
-      if (props.value && typeof props.value.show !== 'undefined') {
+
+      // data coming from db
+      if (props.value) {
         show = props.value.show
       }
 
-      if (typeof show !== 'undefined') {
+      if (typeof show === 'boolean') {
+        state.gdpr.show = show
+
         return {
           ...state,
-          gdpr: {
-            ...state.gdpr,
-            show,
-          },
         }
       }
 
