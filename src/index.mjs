@@ -155,6 +155,7 @@ export const actions = {
         ...state,
         gdpr: {
           ...state.gdpr,
+          allowed: state.cookies.map(c => c.name),
           show: false,
         },
       },
@@ -189,7 +190,7 @@ export const actions = {
     },
 
     deny: state => [
-      state,
+      { ...state, gdpr: { ...state.gdpr, allowed: [] } },
       [
         lib.db.set,
         {
