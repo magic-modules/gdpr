@@ -228,6 +228,7 @@ export const style = (vars = {}) => ({
     fill: vars.colors.gray[100],
 
     '&:hover': {
+      cursor: 'pointer',
       color: vars.colors.gray[500],
       stroke: vars.colors.gray[500],
       fill: vars.colors.gray[500],
