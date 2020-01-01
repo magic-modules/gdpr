@@ -23,7 +23,9 @@ to activate Gdpr, add it to the list of hoisted modules
 export default {
   // ... other config variables
 
-  HOIST: ['Gdpr'],
+  HOIST: 'Gdpr',
+  // hoist multiple modules using an array 
+  // HOIST: ['Gdpr', 'Messages'],
 }
 ```
 after doing this, the gdpr module will show up.
