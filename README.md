@@ -92,9 +92,9 @@ use magic.init to propagate init step.
 * add cookie button if gdpr is hidden
 * state now correctly gets reset on allow and deny
 
-##### 0.0.12 - unreleased
+##### 0.0.12
 * logic changes in actions.gdpr.show
-
+* make svg lose 600 bytes.
 
 ##### 0.0.13 - unreleased
 ...
