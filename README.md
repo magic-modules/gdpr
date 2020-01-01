@@ -88,7 +88,11 @@ simplify api, add hoisting information to docs
 ##### 0.0.10
 use magic.init to propagate init step.
 
-##### 0.0.11 - unreleased
+##### 0.0.11
+* add cookie button if gdpr is hidden
+* state now correctly gets reset on allow and deny
+
+##### 0.0.12 - unreleased
 ...
 
 
