@@ -47,7 +47,6 @@ c11-0,22-3,32-8c0,3,0,6,0,9C480,318,455,374,414,414z
   const hasCookies = !!cookies.length
 
   return div({ class: 'Gdpr' }, [
-    input({ type: 'checkbox', name: 'show-hide', id: 'show-hide', checked: !show }),
     div({ class: 'Container' }, [
       title && h3(title),
       content && p(content),
@@ -72,56 +71,56 @@ c11-0,22-3,32-8c0,3,0,6,0,9C480,318,455,374,414,414z
       hasCookies
         ? [
             h5(allowTitle),
-            label(
-              {
-                class: 'button allow all',
-                for: 'show-hide',
-                onclick: actions.gdpr.allow,
-              },
-              allowAllText,
-            ),
-            label(
-              {
-                class: 'button allow',
-                for: 'show-hide',
-                onclick: actions.gdpr.close,
-              },
-              allowText,
-            ),
-            label(
-              {
-                class: 'button allow none',
-                for: 'show-hide',
-                onclick: actions.gdpr.deny,
-              },
-              denyText,
-            ),
+            input({
+              class: 'allow all',
+              onclick: actions.gdpr.allow,
+              type: 'button',
+              value: allowAllText,
+            }),
+            input({
+              class: 'allow',
+              onclick: actions.gdpr.close,
+              type: 'button',
+              value: allowText,
+            }),
+            input({
+              class: 'allow none',
+              onclick: actions.gdpr.deny,
+              type: 'button',
+              value: denyText,
+            }),
           ]
-        : label({ class: 'button', for: 'show-hide', onclick: actions.gdpr.close }, noDataText),
+        : input({ onclick: actions.gdpr.close, value: noDataText, type: 'button' }),
     ]),
   ])
 }
 
 export const state = {
-  show: true,
+  show: false,
   allowed: [],
 }
 
 export const actions = {
   gdpr: {
     show: (state, props) => {
-      let { show } = props
+      let { show, allowed = state.gdpr.allowed } = props
 
       // data coming from db
       if (props.value) {
         show = props.value.show
+        if (props.value.allowed) {
+          allowed = props.value.allowed
+        }
       }
 
       if (typeof show === 'boolean') {
-        state.gdpr.show = show
-
         return {
           ...state,
+          gdpr: {
+            ...state.gdpr,
+            show,
+            allowed
+          },
         }
       }
 
@@ -263,19 +262,6 @@ export const style = (vars = {}) => ({
     },
   },
 
-  'input[type=checkbox]': {
-    '&#show-hide': {
-      display: 'none',
-    },
-
-    '&:checked ~ .Container': {
-      opacity: 0,
-      height: 0,
-      width: 0,
-      overflow: 'hidden',
-    },
-  },
-
   h3: {
     padding: 0,
     margin: 0,
@@ -286,14 +272,14 @@ export const style = (vars = {}) => ({
     fontWeight: 'bold',
   },
 
-  '.button': {
+  'input[type=button]': {
     display: 'inline-block',
     margin: '0.5em 0',
     width: '100%',
   },
 
   '@media screen and (min-width: 900px)': {
-    '.button': {
+    'input[type=button]': {
       margin: '1em 3% 0 0',
       maxWidth: '30%',
       width: 'auto',
