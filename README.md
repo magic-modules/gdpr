@@ -100,6 +100,7 @@ use magic.init to propagate init step.
 * add cursor: pointer to cookie button
 * allowed now gets set by the init function and subscription too
 * remove functionality for non-js browsers, gdpr will not show up without js enabled
+* require node 13.5.0 and engineStrict it
 
 ##### 0.0.14 - unreleased
 ...
