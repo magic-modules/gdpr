@@ -96,8 +96,12 @@ use magic.init to propagate init step.
 * logic changes in actions.gdpr.show
 * make svg lose 600 bytes.
 
-##### 0.0.13 - unreleased
+##### 0.0.13
 * add cursor: pointer to cookie button
+* allowed now gets set by the init function and subscription too
+* remove functionality for non-js browsers, gdpr will not show up without js enabled
+
+##### 0.0.14 - unreleased
 ...
 
 
