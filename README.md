@@ -24,7 +24,7 @@ export default {
   // ... other config variables
 
   HOIST: 'Gdpr',
-  // hoist multiple modules using an array 
+  // hoist multiple modules using an array
   // HOIST: ['Gdpr', 'Messages'],
 }
 ```
@@ -101,6 +101,7 @@ use magic.init to propagate init step.
 * allowed now gets set by the init function and subscription too
 * remove functionality for non-js browsers, gdpr will not show up without js enabled
 * require node 13.5.0 and engineStrict it
+* update dependencies
 
 ##### 0.0.14 - unreleased
 ...
