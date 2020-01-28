@@ -103,7 +103,10 @@ use magic.init to propagate init step.
 * require node 13.5.0 and engineStrict it
 * update dependencies
 
-##### 0.0.14 - unreleased
+##### 0.0.14 
+update cookie colors
+
+##### 0.0.15 - unreleased
 ...
 
 
