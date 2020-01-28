@@ -221,28 +221,16 @@ export const style = (vars = {}) => ({
     bottom: '1em',
     width: '2em',
     height: '2em',
+    cursor: 'pointer',
 
-    color: vars.colors.gray[100],
-    stroke: vars.colors.gray[100],
-    fill: vars.colors.gray[100],
+    color: vars.colors.gray[500],
+    stroke: vars.colors.gray[500],
+    fill: vars.colors.gray[500],
 
     '&:hover': {
-      cursor: 'pointer',
-      color: vars.colors.gray[500],
-      stroke: vars.colors.gray[500],
-      fill: vars.colors.gray[500],
-    },
-
-    '.light&&': {
-      color: vars.colors.gray[900],
-      stroke: vars.colors.gray[900],
-      fill: vars.colors.gray[900],
-
-      '&:hover': {
-        color: vars.colors.gray[600],
-        stroke: vars.colors.gray[600],
-        fill: vars.colors.gray[600],
-      },
+      color: vars.colors.gray[700],
+      stroke: vars.colors.gray[700],
+      fill: vars.colors.gray[700],
     },
   },
 
