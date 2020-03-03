@@ -1,6 +1,5 @@
 # ${state.title}
 
-
 this is the
 [@magic-modules](https://github.com/magic-modules)
 Gdpr component.
