@@ -10,7 +10,7 @@ ${state.description}
 
 ## installation:
 
-<Pre>npm install --save-exact @magic-modules/gdpr</Pre>
+`npm install --save-exact @magic-modules/gdpr`
 
 ## usage
 
@@ -18,20 +18,20 @@ ${state.description}
 
 to activate Gdpr, add it to the list of hoisted modules
 
-<Pre>
+```
 // src/config.mjs
 export default {
   // ... other config variables
 
   HOIST: ['Gdpr'],
 }
-</Pre>
+```
 
 after doing this, the gdpr module will show up.'),
 
 ### change contents, add cookies
 
-<Pre>
+```
 // /src/app.mjs
 export const state = {
   gdpr: {
@@ -48,7 +48,7 @@ export const state = {
     ['cookie 2', { title: 'cookie title', content: 'cookie content' }],
   ],
 })
-</Pre>
+```
 
 ## source
 
