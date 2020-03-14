@@ -6,7 +6,7 @@ Gdpr component.
 
 ${state.description}
 
-<GitBadges>magic-modules/gdpr</GitBadges>
+<GitBadges>@magic-modules/gdpr</GitBadges>
 
 ## installation:
 
