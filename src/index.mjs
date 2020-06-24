@@ -53,7 +53,7 @@ c11-0,22-3,32-8c0,3,0,6,0,9C480,318,455,374,414,414z
       hasCookies && [
         ul(
           cookies.map(({ name, title, content, allowed = false }) =>
-            li({ class: 'Cookie' }, [
+            li([
               input({
                 type: 'checkbox',
                 title: `allow ${name} data`,
