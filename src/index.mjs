@@ -73,13 +73,13 @@ c11-0,22-3,32-8c0,3,0,6,0,9C480,318,455,374,414,414z
             h5(allowTitle),
             input({
               class: 'allow all',
-              onclick: actions.gdpr.allow,
+              onclick: actions.gdpr.allowAll,
               type: 'button',
               value: allowAllText,
             }),
             input({
               class: 'allow',
-              onclick: actions.gdpr.close,
+              onclick: actions.gdpr.allowSome,
               type: 'button',
               value: allowText,
             }),
@@ -90,7 +90,7 @@ c11-0,22-3,32-8c0,3,0,6,0,9C480,318,455,374,414,414z
               value: denyText,
             }),
           ]
-        : input({ onclick: actions.gdpr.close, value: noDataText, type: 'button' }),
+        : input({ onclick: actions.gdpr.allowSome, value: noDataText, type: 'button' }),
     ]),
   ])
 }
@@ -114,88 +114,66 @@ export const actions = {
       }
 
       if (typeof show === 'boolean') {
-        return {
-          ...state,
-          gdpr: {
-            ...state.gdpr,
-            show,
-            allowed
-          },
-        }
+        state.gdpr.show = show
+        state.gdpr.allowed = allowed
+
+        return { ...state }
       }
 
       // return unchanged, no redraw
       return state
     },
 
-    close: state => [
-      {
-        ...state,
-        gdpr: {
-          ...state.gdpr,
-          show: false,
-        },
-      },
-      [
-        lib.db.set,
-        {
-          key: 'magic-gdpr',
-          value: {
-            allowed: state.gdpr.allowed,
-            show: false,
+    allowSome: state => [
+        { ...state },
+        [
+          lib.db.set,
+          {
+            key: 'magic-gdpr',
+            value: {
+              allowed: state.gdpr.allowed,
+              show: false,
+            },
+            action: actions.gdpr.show,
           },
-          action: [actions.gdpr.show, { show: false }],
-        },
+        ],
       ],
-    ],
 
-    allow: state => [
-      {
-        ...state,
-        gdpr: {
-          ...state.gdpr,
-          allowed: state.cookies.map(c => c.name),
-          show: false,
-        },
-      },
-      [
-        lib.db.set,
-        {
-          key: 'magic-gdpr',
-          value: {
-            allowed: state.cookies.map(c => c.name),
-            show: false,
+    allowAll: state => [
+        { ...state },
+        [
+          lib.db.set,
+          {
+            key: 'magic-gdpr',
+            value: {
+              allowed: state.cookies.map(c => c.name),
+              show: false,
+            },
+            action: actions.gdpr.show,
           },
-          action: [actions.gdpr.show, { show: false }],
-        },
+        ],
       ],
-    ],
 
     toggleAllow: (state, { name }) => {
-      const { gdpr } = state
-
-      const active = gdpr.allowed.includes(name)
+      const active = state.gdpr.allowed.includes(name)
 
       if (!active) {
-        gdpr.allowed.push(name)
+        state.gdpr.allowed.push(name)
       } else {
-        gdpr.allowed = gdpr.allowed.filter(c => c !== name)
+        state.gdpr.allowed = state.gdpr.allowed.filter(c => c !== name)
       }
 
-      return {
-        ...state,
-        gdpr,
-      }
+      return { ...state }
     },
 
     deny: state => [
-      { ...state, gdpr: { ...state.gdpr, allowed: [] } },
+      state,
       [
         lib.db.set,
         {
           key: 'magic-gdpr',
           value: { allowed: [], show: false },
-          action: [actions.gdpr.show, { show: false }],
+          action: actions.gdpr.show,
         },
       ],
     ],
