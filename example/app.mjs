@@ -21,7 +21,7 @@ export const state = {
   },
 
   cookies: [
-    { name: 'name', title: 'cookie title', content: 'cookie description' },
-    { name: 'cookie2', title: 'cookie2 title', content: 'cookie2 info content' },
+    { name: 'name1', title: 'cookie 1 title', content: 'cookie 1 description' },
+    { name: 'name2', title: 'cookie 2 title', content: 'cookie 2 description' },
   ],
 }
