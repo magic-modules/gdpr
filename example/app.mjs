@@ -2,7 +2,7 @@ export const state = {
   title: '@magic-modules/gdpr',
   description:
     'adds a gdpr compliant information popup with minimal intrusion and complexity to your page.',
-  logotext: 'Gdpr',
+  logotext: '@magic-modules/gdpr',
   menu: [
     { to: '/#installation', text: 'installation' },
     { to: '/#usage', text: 'usage' },
