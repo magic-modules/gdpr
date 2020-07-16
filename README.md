@@ -115,7 +115,10 @@ bump required node version to 14.2.0
 ##### 0.0.17 
 fix css error that prevented cookie input fields from being displayed.
 
-##### 0.0.18 - unreleased
+##### 0.0.18
+fix cookie allow/deny actions
+
+##### 0.0.19 - unreleased
 ...
 
 
