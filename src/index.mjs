@@ -213,8 +213,10 @@ export const style = (vars = {}) => ({
     color: vars.colors.gray[100],
     display: 'inline-block',
     padding: '1em',
-    position: 'relative',
+    position: 'fixed',
     textAlign: 'left',
+    left: '0.5em',
+    bottom: '0.5em',
 
     '.light&&': {
       backgroundColor: vars.colors.gray[100],
