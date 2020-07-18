@@ -66,7 +66,7 @@ c11-0,22-3,32-8c0,3,0,6,0,9C480,318,455,374,414,414z
                 onchange: [actions.gdpr.toggleAllow, { name }],
               }),
               (title || content) &&
-                label({ for: name }, [title && h4(title), content && p(content)]),
+              label({ for: name }, [title && h4(title), content && p(content)]),
             ]),
           ),
         ),
@@ -74,26 +74,26 @@ c11-0,22-3,32-8c0,3,0,6,0,9C480,318,455,374,414,414z
 
       hasCookies
         ? [
-            h5(allowTitle),
-            input({
-              class: 'allow all',
-              onclick: actions.gdpr.allowAll,
-              type: 'button',
-              value: allowAllText,
-            }),
-            input({
-              class: 'allow',
-              onclick: actions.gdpr.allowSome,
-              type: 'button',
-              value: allowText,
-            }),
-            input({
-              class: 'allow none',
-              onclick: actions.gdpr.deny,
-              type: 'button',
-              value: denyText,
-            }),
-          ]
+          h5(allowTitle),
+          input({
+            class: 'allow all',
+            onclick: actions.gdpr.allowAll,
+            type: 'button',
+            value: allowAllText,
+          }),
+          input({
+            class: 'allow',
+            onclick: actions.gdpr.allowSome,
+            type: 'button',
+            value: allowText,
+          }),
+          input({
+            class: 'allow none',
+            onclick: actions.gdpr.deny,
+            type: 'button',
+            value: denyText,
+          }),
+        ]
         : input({ onclick: actions.gdpr.allowSome, value: noDataText, type: 'button' }),
     ]),
   ])
@@ -185,22 +185,14 @@ export const actions = {
 }
 
 export const style = (vars = {}) => ({
-  bottom: '0.5em',
-  position: 'fixed',
-  left: '3%',
-  maxWidth: '94%',
-  textAlign: 'center',
-
   ul: {
     display: 'block',
   },
 
   '.ShowHide': {
     position: 'fixed',
-    left: '1em',
-    bottom: '1em',
-    width: '2em',
-    height: '2em',
+    left: '0.5em',
+    bottom: '0.5em',
     cursor: 'pointer',
 
     color: vars.colors.gray[500],
