@@ -14,7 +14,11 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
     return div(
       { class: 'Gdpr' },
       svg(
-        { class: 'ShowHide', onclick: [actions.gdpr.show, { show: true }], viewBox: '0 0 512 512' },
+        {
+          class: 'ShowHide icon',
+          onclick: [actions.gdpr.show, { show: true }],
+          viewBox: '0 0 512 512',
+        },
         [
           g([
             path({
@@ -125,34 +129,34 @@ export const actions = {
     },
 
     allowSome: state => [
-        { ...state },
-        [
-          lib.db.set,
-          {
-            key: 'magic-gdpr',
-            value: {
-              allowed: state.gdpr.allowed,
-              show: false,
-            },
-            action: actions.gdpr.show,
+      { ...state },
+      [
+        lib.db.set,
+        {
+          key: 'magic-gdpr',
+          value: {
+            allowed: state.gdpr.allowed,
+            show: false,
           },
-        ],
+          action: actions.gdpr.show,
+        },
       ],
+    ],
 
     allowAll: state => [
-        { ...state },
-        [
-          lib.db.set,
-          {
-            key: 'magic-gdpr',
-            value: {
-              allowed: state.cookies.map(c => c.name),
-              show: false,
-            },
-            action: actions.gdpr.show,
+      { ...state },
+      [
+        lib.db.set,
+        {
+          key: 'magic-gdpr',
+          value: {
+            allowed: state.cookies.map(c => c.name),
+            show: false,
           },
-        ],
+          action: actions.gdpr.show,
+        },
       ],
+    ],
 
     toggleAllow: (state, { name }) => {
       const active = state.gdpr.allowed.includes(name)
@@ -183,8 +187,6 @@ export const actions = {
 export const style = (vars = {}) => ({
   bottom: '0.5em',
   position: 'fixed',
-  opacity: 0,
-  animation: 'showGdpr 1s 1s forwards',
   left: '3%',
   maxWidth: '94%',
   textAlign: 'center',
@@ -249,15 +251,6 @@ export const style = (vars = {}) => ({
       margin: '1em 3% 0 0',
       maxWidth: '30%',
       width: 'auto',
-    },
-  },
-
-  '@keyframes showGdpr': {
-    '0%': {
-      opacity: 0,
-    },
-    '100%': {
-      opacity: 1,
     },
   },
 })
