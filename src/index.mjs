@@ -15,7 +15,7 @@ export const View = ({ gdpr = {}, cookies = [] }) => {
       { class: 'Gdpr' },
       svg(
         {
-          class: 'ShowHide icon',
+          class: 'icon',
           onclick: [actions.gdpr.show, { show: true }],
           viewBox: '0 0 512 512',
         },
@@ -189,7 +189,7 @@ export const style = (vars = {}) => ({
     display: 'block',
   },
 
-  '.ShowHide': {
+  '.icon': {
     position: 'fixed',
     left: '0.5em',
     bottom: '0.5em',
