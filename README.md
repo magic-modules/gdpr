@@ -118,7 +118,11 @@ fix css error that prevented cookie input fields from being displayed.
 ##### 0.0.18
 fix cookie allow/deny actions
 
-##### 0.0.19 - unreleased
+##### 0.0.19 
+* remove ShowHide class
+* bump required node version to 14.15.4
+
+##### 0.0.20 - unreleased
 ...
 
 
