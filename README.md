@@ -125,7 +125,10 @@ fix cookie allow/deny actions
 ##### 0.0.20
 update dependencies (@magic-libraries/db)
 
-##### 0.0.21 - unreleased
+##### 0.0.21
+update dependencies (@magic-libraries/db)
+
+##### 0.0.22 - unreleased
 ...
 
 
