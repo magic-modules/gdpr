@@ -122,7 +122,10 @@ fix cookie allow/deny actions
 * remove ShowHide class
 * bump required node version to 14.15.4
 
-##### 0.0.20 - unreleased
+##### 0.0.20
+update dependencies (@magic-libraries/db)
+
+##### 0.0.21 - unreleased
 ...
 
 
