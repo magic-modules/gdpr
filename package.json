@@ -32,7 +32,7 @@
     "url": "https://github.com/magic-modules/gdpr/issues"
   },
   "dependencies": {
-    "@magic-libraries/db": "0.0.9"
+    "@magic-libraries/db": "0.0.10"
   },
   "devDependencies": {
     "@magic-modules/git-badges": "0.0.11",
